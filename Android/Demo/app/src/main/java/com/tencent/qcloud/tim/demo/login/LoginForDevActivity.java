@@ -24,7 +24,6 @@ import com.tencent.qcloud.tim.demo.DemoApplication;
 import com.tencent.qcloud.tim.demo.R;
 import com.tencent.qcloud.tim.demo.bean.UserInfo;
 import com.tencent.qcloud.tim.demo.main.MainActivity;
-import com.tencent.qcloud.tim.demo.main.MainMinimalistActivity;
 import com.tencent.qcloud.tim.demo.signature.GenerateTestUserSig;
 import com.tencent.qcloud.tim.demo.utils.DemoLog;
 import com.tencent.qcloud.tim.demo.utils.TUIUtils;
@@ -50,8 +49,8 @@ public class LoginForDevActivity extends BaseLightActivity {
     private static final String TAG = LoginForDevActivity.class.getSimpleName();
     private TextView mLoginView;
     private EditText mUserAccount;
-    private TextView languageTv, styleTv;
-    private View languageArea, styleArea;
+    private TextView languageTv;
+    private View languageArea;
     private View modifyTheme;
     private ImageView logo;
 
@@ -87,9 +86,9 @@ public class LoginForDevActivity extends BaseLightActivity {
 
     private void initActivity() {
         setContentView(R.layout.login_for_dev_activity);
-
-        styleArea = findViewById(R.id.modify_style);
-        styleTv = findViewById(R.id.demo_login_style_tv);
+//
+//        styleArea = findViewById(R.id.modify_style);
+//        styleTv = findViewById(R.id.demo_login_style_tv);
 
         languageArea = findViewById(R.id.language_area);
         languageTv = findViewById(R.id.demo_login_language);
@@ -131,12 +130,7 @@ public class LoginForDevActivity extends BaseLightActivity {
                     public void onSuccess() {
                         UserInfo.getInstance().setAutoLogin(true);
                         UserInfo.getInstance().setDebugLogin(true);
-                        Intent intent;
-                        if (DemoApplication.tuikit_demo_style == 0) {
-                            intent = new Intent(LoginForDevActivity.this, MainActivity.class);
-                        } else {
-                            intent = new Intent(LoginForDevActivity.this, MainMinimalistActivity.class);
-                        }
+                        Intent intent = new Intent(LoginForDevActivity.this, MainActivity.class);
                         startActivity(intent);
 
                         DemoApplication.instance().registerPushManually();
@@ -176,13 +170,6 @@ public class LoginForDevActivity extends BaseLightActivity {
             }
         });
 
-        styleArea.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                StyleSelectActivity.startStyleSelectActivity(LoginForDevActivity.this);
-            }
-        });
-
         modifyTheme.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -190,18 +177,18 @@ public class LoginForDevActivity extends BaseLightActivity {
             }
         });
     }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        if (DemoApplication.tuikit_demo_style == 0) {
-            modifyTheme.setVisibility(View.VISIBLE);
-            styleTv.setText(getString(R.string.style_classic));
-        } else {
-            modifyTheme.setVisibility(View.GONE);
-            styleTv.setText(getString(R.string.style_minimalist));
-        }
-    }
+//
+//    @Override
+//    protected void onResume() {
+//        super.onResume();
+//        if (DemoApplication.tuikit_demo_style == 0) {
+//            modifyTheme.setVisibility(View.VISIBLE);
+//            styleTv.setText(getString(R.string.style_classic));
+//        } else {
+//            modifyTheme.setVisibility(View.GONE);
+//            styleTv.setText(getString(R.string.style_minimalist));
+//        }
+//    }
 
     private void setCurrentTheme() {
         int currentTheme = TUIThemeManager.getInstance().getCurrentTheme();

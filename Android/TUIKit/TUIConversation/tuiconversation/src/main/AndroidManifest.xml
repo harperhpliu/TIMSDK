@@ -21,19 +21,6 @@
         <!-- **************** Classic UI Activity End **************** -->
 
 
-
-
-
-        <!-- **************** Minimalist UI Activity Start **************** -->
-        <activity
-            android:name=".minimalistui.page.TUIForwardSelectMinimalistActivity"
-            android:screenOrientation="portrait" />
-
-        <activity
-            android:name=".minimalistui.page.TUIFoldedConversationMinimalistActivity"
-            android:screenOrientation="portrait" />
-        <!-- **************** Minimalist UI Activity End **************** -->
-
     </application>
 
 </manifest>

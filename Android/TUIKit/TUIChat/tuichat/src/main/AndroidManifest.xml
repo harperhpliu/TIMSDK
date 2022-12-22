@@ -58,49 +58,6 @@
             android:exported="false"/>
         <!-- **************** Classic UI End **************** -->
 
-
-
-
-
-        <!-- **************** Minimalist UI Start **************** -->
-        <activity
-            android:name=".minimalistui.component.camera.CameraActivity"
-            android:screenOrientation="portrait" />
-
-        <activity
-            android:name=".minimalistui.widget.messagepopmenu.ChatPopActivity"
-            android:theme="@style/ChatTransparentPopActivityStyle"
-            android:launchMode="singleTask"
-            android:windowSoftInputMode="adjustNothing|stateHidden" />
-
-        <activity
-            android:name=".minimalistui.page.TUIC2CChatMinimalistActivity"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustNothing|stateHidden" />
-
-        <activity
-            android:name=".minimalistui.page.TUIGroupChatMinimalistActivity"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustNothing|stateHidden" />
-
-        <activity
-            android:name=".minimalistui.page.MessageDetailMinimalistActivity"
-            android:screenOrientation="portrait" />
-
-        <activity
-            android:name=".minimalistui.page.TUIForwardChatMinimalistActivity"
-            android:screenOrientation="portrait" />
-
-        <provider
-            android:name=".minimalistui.MinimalistUIService"
-            android:authorities="${applicationId}.TUIChat.MinimalistUI.Init"
-            android:enabled="true"
-            android:exported="false"/>
-        <!-- **************** Minimalist UI End **************** -->
-
-
     </application>
 
 </manifest>

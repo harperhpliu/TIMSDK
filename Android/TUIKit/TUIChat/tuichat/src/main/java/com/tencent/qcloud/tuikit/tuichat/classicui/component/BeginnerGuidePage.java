@@ -121,7 +121,7 @@ public class BeginnerGuidePage {
                 @Override
                 public void onClick(View v) {
                     if (viewPager != null) {
-                        int currentPos = holder.getBindingAdapterPosition();
+                        int currentPos = holder.getAdapterPosition();
                         if (currentPos < getItemCount() - 1) {
                             viewPager.setCurrentItem(currentPos + 1, true);
                         } else {

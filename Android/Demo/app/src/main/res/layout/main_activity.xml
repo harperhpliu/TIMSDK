@@ -79,76 +79,76 @@
 
             </RelativeLayout>
 
-            <RelativeLayout
-                android:id="@+id/community_btn_group"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:onClick="tabClick">
+<!--            <RelativeLayout-->
+<!--                android:id="@+id/community_btn_group"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:layout_weight="1"-->
+<!--                android:onClick="tabClick">-->
 
-                <ImageView
-                    android:id="@+id/tab_community_icon"
-                    android:layout_width="32dp"
-                    android:layout_height="32dp"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="8dp"
-                    android:background="?attr/demo_main_tab_community_normal_bg" />
+<!--                <ImageView-->
+<!--                    android:id="@+id/tab_community_icon"-->
+<!--                    android:layout_width="32dp"-->
+<!--                    android:layout_height="32dp"-->
+<!--                    android:layout_centerHorizontal="true"-->
+<!--                    android:layout_marginTop="8dp"-->
+<!--                    android:background="?attr/demo_main_tab_community_normal_bg" />-->
 
-                <TextView
-                    android:id="@+id/tab_community_tv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/tab_community_icon"
-                    android:layout_centerInParent="true"
-                    android:gravity="center"
-                    android:text="@string/tab_community_tab_text"
-                    android:textColor="?attr/demo_main_tab_normal_text_color"
-                    android:textSize="12sp" />
+<!--                <TextView-->
+<!--                    android:id="@+id/tab_community_tv"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_below="@id/tab_community_icon"-->
+<!--                    android:layout_centerInParent="true"-->
+<!--                    android:gravity="center"-->
+<!--                    android:text="@string/tab_community_tab_text"-->
+<!--                    android:textColor="?attr/demo_main_tab_normal_text_color"-->
+<!--                    android:textSize="12sp" />-->
 
-            </RelativeLayout>
+<!--            </RelativeLayout>-->
 
-            <RelativeLayout
-                android:id="@+id/contact_btn_group"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:onClick="tabClick">
+<!--            <RelativeLayout-->
+<!--                android:id="@+id/contact_btn_group"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:layout_weight="1"-->
+<!--                android:onClick="tabClick">-->
 
-                <ImageView
-                    android:id="@+id/tab_contact_icon"
-                    android:layout_width="32dp"
-                    android:layout_height="32dp"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="8dp"
-                    android:background="?attr/demo_main_tab_contact_normal_bg" />
+<!--                <ImageView-->
+<!--                    android:id="@+id/tab_contact_icon"-->
+<!--                    android:layout_width="32dp"-->
+<!--                    android:layout_height="32dp"-->
+<!--                    android:layout_centerHorizontal="true"-->
+<!--                    android:layout_marginTop="8dp"-->
+<!--                    android:background="?attr/demo_main_tab_contact_normal_bg" />-->
 
-                <TextView
-                    android:id="@+id/contact"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/tab_contact_icon"
-                    android:layout_centerInParent="true"
-                    android:gravity="center"
-                    android:text="@string/tab_contact_tab_text"
-                    android:textColor="?attr/demo_main_tab_normal_text_color"
-                    android:textSize="12sp" />
+<!--                <TextView-->
+<!--                    android:id="@+id/contact"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_below="@id/tab_contact_icon"-->
+<!--                    android:layout_centerInParent="true"-->
+<!--                    android:gravity="center"-->
+<!--                    android:text="@string/tab_contact_tab_text"-->
+<!--                    android:textColor="?attr/demo_main_tab_normal_text_color"-->
+<!--                    android:textSize="12sp" />-->
 
-                <com.tencent.qcloud.tuicore.component.UnreadCountTextView
-                    android:id="@+id/new_friend_total_unread"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentTop="true"
-                    android:layout_marginStart="-8dp"
-                    android:layout_marginTop="1dp"
-                    android:layout_toEndOf="@id/contact"
-                    android:gravity="center"
-                    android:includeFontPadding="false"
-                    android:textColor="@color/white"
-                    android:minWidth="18.4dp"
-                    android:minHeight="18.4dp"
-                    android:textSize="13.6sp"
-                    android:visibility="gone" />
-            </RelativeLayout>
+<!--                <com.tencent.qcloud.tuicore.component.UnreadCountTextView-->
+<!--                    android:id="@+id/new_friend_total_unread"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_alignParentTop="true"-->
+<!--                    android:layout_marginStart="-8dp"-->
+<!--                    android:layout_marginTop="1dp"-->
+<!--                    android:layout_toEndOf="@id/contact"-->
+<!--                    android:gravity="center"-->
+<!--                    android:includeFontPadding="false"-->
+<!--                    android:textColor="@color/white"-->
+<!--                    android:minWidth="18.4dp"-->
+<!--                    android:minHeight="18.4dp"-->
+<!--                    android:textSize="13.6sp"-->
+<!--                    android:visibility="gone" />-->
+<!--            </RelativeLayout>-->
 
             <RelativeLayout
                 android:id="@+id/myself_btn_group"

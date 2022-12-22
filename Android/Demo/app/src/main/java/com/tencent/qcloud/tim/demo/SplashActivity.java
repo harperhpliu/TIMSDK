@@ -11,7 +11,6 @@ import com.tencent.imsdk.v2.V2TIMCallback;
 import com.tencent.qcloud.tim.demo.bean.UserInfo;
 import com.tencent.qcloud.tim.demo.login.LoginForDevActivity;
 import com.tencent.qcloud.tim.demo.main.MainActivity;
-import com.tencent.qcloud.tim.demo.main.MainMinimalistActivity;
 import com.tencent.qcloud.tim.demo.utils.DemoLog;
 import com.tencent.qcloud.tim.demo.utils.TUIUtils;
 import com.tencent.qcloud.tuicore.TUIConstants;
@@ -84,12 +83,7 @@ public class SplashActivity extends BaseLightActivity {
     private void startMain() {
         DemoLog.i(TAG, "MainActivity" );
 
-        Intent intent;
-        if (DemoApplication.tuikit_demo_style == 0) {
-            intent = new Intent(SplashActivity.this, MainActivity.class);
-        } else {
-            intent = new Intent(SplashActivity.this, MainMinimalistActivity.class);
-        }
+        Intent intent = new Intent(SplashActivity.this, MainActivity.class);
         Intent dataIntent = getIntent();
         intent.putExtras(dataIntent);
         if (dataIntent != null) {

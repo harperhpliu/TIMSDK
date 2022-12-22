@@ -1,6 +1,5 @@
 package com.tencent.qcloud.tim.demo.main;
 
-import android.app.NotificationManager;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -8,7 +7,6 @@ import android.content.IntentFilter;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
@@ -25,7 +23,6 @@ import com.tencent.imsdk.BaseConstants;
 import com.tencent.imsdk.v2.V2TIMCallback;
 import com.tencent.imsdk.v2.V2TIMConversation;
 import com.tencent.imsdk.v2.V2TIMConversationListFilter;
-import com.tencent.imsdk.v2.V2TIMConversationListener;
 import com.tencent.imsdk.v2.V2TIMConversationOperationResult;
 import com.tencent.imsdk.v2.V2TIMConversationResult;
 import com.tencent.imsdk.v2.V2TIMFriendApplication;
@@ -52,9 +49,6 @@ import com.tencent.qcloud.tuicore.component.activities.BaseLightActivity;
 import com.tencent.qcloud.tuicore.component.interfaces.ITitleBarLayout;
 import com.tencent.qcloud.tuicore.util.ErrorMessageConverter;
 import com.tencent.qcloud.tuicore.util.ToastUtil;
-import com.tencent.qcloud.tuikit.tuicommunity.ui.page.TUICommunityFragment;
-import com.tencent.qcloud.tuikit.tuicontact.TUIContactConstants;
-import com.tencent.qcloud.tuikit.tuicontact.classicui.pages.TUIContactFragment;
 import com.tencent.qcloud.tuikit.tuiconversation.TUIConversationConstants;
 import com.tencent.qcloud.tuikit.tuiconversation.classicui.page.TUIConversationFragment;
 
@@ -68,14 +62,14 @@ import java.util.Map;
 public class MainActivity extends BaseLightActivity {
 
     private static final String TAG = MainActivity.class.getSimpleName();
-    private TextView mCommunityBtnText;
+//    private TextView mCommunityBtnText;
     private TextView mConversationBtnText;
-    private TextView mContactBtnText;
+//    private TextView mContactBtnText;
     private TextView mProfileSelfBtnText;
     private View mConversationBtn;
-    private ImageView mCommunityBtnIcon;
+//    private ImageView mCommunityBtnIcon;
     private ImageView mConversationBtnIcon;
-    private ImageView mContactBtnIcon;
+//    private ImageView mContactBtnIcon;
     private ImageView mProfileSelfBtnIcon;
     private TextView mMsgUnread;
     private TextView mNewFriendUnread;
@@ -141,13 +135,13 @@ public class MainActivity extends BaseLightActivity {
 
         mainTitleBar = findViewById(R.id.main_title_bar);
         initMenuAction();
-        mCommunityBtnText = findViewById(R.id.tab_community_tv);
+//        mCommunityBtnText = findViewById(R.id.tab_community_tv);
         mConversationBtnText = findViewById(R.id.conversation);
-        mContactBtnText = findViewById(R.id.contact);
+//        mContactBtnText = findViewById(R.id.contact);
         mProfileSelfBtnText = findViewById(R.id.mine);
-        mCommunityBtnIcon = findViewById(R.id.tab_community_icon);
+//        mCommunityBtnIcon = findViewById(R.id.tab_community_icon);
         mConversationBtnIcon = findViewById(R.id.tab_conversation_icon);
-        mContactBtnIcon = findViewById(R.id.tab_contact_icon);
+//        mContactBtnIcon = findViewById(R.id.tab_contact_icon);
         mProfileSelfBtnIcon = findViewById(R.id.tab_profile_icon);
         mConversationBtn = findViewById(R.id.conversation_btn_group);
         mMsgUnread = findViewById(R.id.msg_total_unread);
@@ -155,9 +149,9 @@ public class MainActivity extends BaseLightActivity {
         mainNavigationBar = findViewById(R.id.main_navigation_bar);
 
         fragments = new ArrayList<>();
-        fragments.add(new TUIConversationFragment());
-        fragments.add(new TUICommunityFragment());
-        fragments.add(new TUIContactFragment());
+//        fragments.add(new TUIConversationFragment());
+//        fragments.add(new TUICommunityFragment());
+//        fragments.add(new TUIContactFragment());
         fragments.add(new ProfileFragment());
 
         mainViewPager = findViewById(R.id.view_pager);
@@ -341,20 +335,6 @@ public class MainActivity extends BaseLightActivity {
                 mConversationBtnText.setTextColor(getResources().getColor(TUIThemeManager.getAttrResId(this, R.attr.demo_main_tab_selected_text_color)));
                 mConversationBtnIcon.setBackground(getResources().getDrawable(TUIThemeManager.getAttrResId(this, R.attr.demo_main_tab_conversation_selected_bg)));
                 break;
-            case R.id.community_btn_group:
-                mainTitleBar.setVisibility(View.GONE);
-                mainViewPager.setCurrentItem(1, false);
-                mCommunityBtnText.setTextColor(getResources().getColor(TUIThemeManager.getAttrResId(this, R.attr.demo_main_tab_selected_text_color)));
-                mCommunityBtnIcon.setBackground(getResources().getDrawable(TUIThemeManager.getAttrResId(this, R.attr.demo_main_tab_community_selected_bg)));
-                setCommunityBackground();
-                break;
-            case R.id.contact_btn_group:
-                mainTitleBar.setVisibility(View.VISIBLE);
-                mainViewPager.setCurrentItem(2, false);
-                setContactTitleBar();
-                mContactBtnText.setTextColor(getResources().getColor(TUIThemeManager.getAttrResId(this, R.attr.demo_main_tab_selected_text_color)));
-                mContactBtnIcon.setBackground(getResources().getDrawable(TUIThemeManager.getAttrResId(this, R.attr.demo_main_tab_contact_selected_bg)));
-                break;
             case R.id.myself_btn_group:
                 mainTitleBar.setVisibility(View.VISIBLE);
                 mainViewPager.setCurrentItem(3, false);
@@ -366,13 +346,13 @@ public class MainActivity extends BaseLightActivity {
                 break;
         }
     }
-
-    private void setCommunityBackground() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            getWindow().setStatusBarColor(getResources().getColor(R.color.demo_community_page_status_bar_color));
-        }
-        mainNavigationBar.setBackgroundColor(getResources().getColor(R.color.demo_community_page_navigate_bar_color));
-    }
+//
+//    private void setCommunityBackground() {
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+//            getWindow().setStatusBarColor(getResources().getColor(R.color.demo_community_page_status_bar_color));
+//        }
+//        mainNavigationBar.setBackgroundColor(getResources().getColor(R.color.demo_community_page_navigate_bar_color));
+//    }
 
     private void setConversationTitleBar() {
         mainTitleBar.setTitle(getResources().getString(R.string.conversation_title), ITitleBarLayout.Position.MIDDLE);
@@ -438,48 +418,48 @@ public class MainActivity extends BaseLightActivity {
 
         menu.setMenuAction(menuActions);
     }
-
-    private void setContactTitleBar() {
-        mainTitleBar.setTitle(getResources().getString(R.string.contact_title), ITitleBarLayout.Position.MIDDLE);
-        mainTitleBar.getLeftGroup().setVisibility(View.GONE);
-        mainTitleBar.getRightGroup().setVisibility(View.VISIBLE);
-        mainTitleBar.setRightIcon(TUIThemeManager.getAttrResId(this, R.attr.demo_title_bar_more));
-        setContactMenu();
-    }
-
-    public void setContactMenu() {
-        menu = new Menu(this, mainTitleBar.getRightIcon());
-        List<PopMenuAction> menuActionList = new ArrayList<>(2);
-        PopActionClickListener popActionClickListener = new PopActionClickListener() {
-            @Override
-            public void onActionClick(int index, Object data) {
-                PopMenuAction action = (PopMenuAction) data;
-                if (TextUtils.equals(action.getActionName(), getResources().getString(R.string.add_friend))) {
-                    Bundle bundle = new Bundle();
-                    bundle.putBoolean(TUIContactConstants.GroupType.GROUP, false);
-                    TUIUtils.startActivity("AddMoreActivity", bundle);
-                }
-                if (TextUtils.equals(action.getActionName(), getResources().getString(R.string.add_group))) {
-                    Bundle bundle = new Bundle();
-                    bundle.putBoolean(TUIContactConstants.GroupType.GROUP, true);
-                    TUIUtils.startActivity("AddMoreActivity", bundle);
-                }
-                menu.hide();
-            }
-        };
-        PopMenuAction action = new PopMenuAction();
-        action.setActionName(getResources().getString(R.string.add_friend));
-        action.setIconResId(com.tencent.qcloud.tuikit.tuicontact.R.drawable.contact_add_friend);
-        action.setActionClickListener(popActionClickListener);
-        menuActionList.add(action);
-
-        action = new PopMenuAction();
-        action.setActionName(getResources().getString(R.string.add_group));
-        action.setIconResId(com.tencent.qcloud.tuikit.tuicontact.R.drawable.contact_add_group);
-        action.setActionClickListener(popActionClickListener);
-        menuActionList.add(action);
-        menu.setMenuAction(menuActionList);
-    }
+//
+//    private void setContactTitleBar() {
+//        mainTitleBar.setTitle(getResources().getString(R.string.contact_title), ITitleBarLayout.Position.MIDDLE);
+//        mainTitleBar.getLeftGroup().setVisibility(View.GONE);
+//        mainTitleBar.getRightGroup().setVisibility(View.VISIBLE);
+//        mainTitleBar.setRightIcon(TUIThemeManager.getAttrResId(this, R.attr.demo_title_bar_more));
+//        setContactMenu();
+//    }
+//
+//    public void setContactMenu() {
+//        menu = new Menu(this, mainTitleBar.getRightIcon());
+//        List<PopMenuAction> menuActionList = new ArrayList<>(2);
+//        PopActionClickListener popActionClickListener = new PopActionClickListener() {
+//            @Override
+//            public void onActionClick(int index, Object data) {
+//                PopMenuAction action = (PopMenuAction) data;
+//                if (TextUtils.equals(action.getActionName(), getResources().getString(R.string.add_friend))) {
+//                    Bundle bundle = new Bundle();
+//                    bundle.putBoolean(TUIContactConstants.GroupType.GROUP, false);
+//                    TUIUtils.startActivity("AddMoreActivity", bundle);
+//                }
+//                if (TextUtils.equals(action.getActionName(), getResources().getString(R.string.add_group))) {
+//                    Bundle bundle = new Bundle();
+//                    bundle.putBoolean(TUIContactConstants.GroupType.GROUP, true);
+//                    TUIUtils.startActivity("AddMoreActivity", bundle);
+//                }
+//                menu.hide();
+//            }
+//        };
+//        PopMenuAction action = new PopMenuAction();
+//        action.setActionName(getResources().getString(R.string.add_friend));
+//        action.setIconResId(com.tencent.qcloud.tuikit.tuicontact.R.drawable.contact_add_friend);
+//        action.setActionClickListener(popActionClickListener);
+//        menuActionList.add(action);
+//
+//        action = new PopMenuAction();
+//        action.setActionName(getResources().getString(R.string.add_group));
+//        action.setIconResId(com.tencent.qcloud.tuikit.tuicontact.R.drawable.contact_add_group);
+//        action.setActionClickListener(popActionClickListener);
+//        menuActionList.add(action);
+//        menu.setMenuAction(menuActionList);
+//    }
 
     private void setProfileTitleBar() {
         mainTitleBar.getLeftGroup().setVisibility(View.GONE);
@@ -490,10 +470,10 @@ public class MainActivity extends BaseLightActivity {
     private void resetMenuState() {
         mConversationBtnText.setTextColor(getResources().getColor(TUIThemeManager.getAttrResId(this, R.attr.demo_main_tab_normal_text_color)));
         mConversationBtnIcon.setBackground(getResources().getDrawable(TUIThemeManager.getAttrResId(this, R.attr.demo_main_tab_conversation_normal_bg)));
-        mCommunityBtnText.setTextColor(getResources().getColor(TUIThemeManager.getAttrResId(this, R.attr.demo_main_tab_normal_text_color)));
-        mCommunityBtnIcon.setBackground(getResources().getDrawable(TUIThemeManager.getAttrResId(this, R.attr.demo_main_tab_community_normal_bg)));
-        mContactBtnText.setTextColor(getResources().getColor(TUIThemeManager.getAttrResId(this, R.attr.demo_main_tab_normal_text_color)));
-        mContactBtnIcon.setBackground(getResources().getDrawable(TUIThemeManager.getAttrResId(this, R.attr.demo_main_tab_contact_normal_bg)));
+//        mCommunityBtnText.setTextColor(getResources().getColor(TUIThemeManager.getAttrResId(this, R.attr.demo_main_tab_normal_text_color)));
+//        mCommunityBtnIcon.setBackground(getResources().getDrawable(TUIThemeManager.getAttrResId(this, R.attr.demo_main_tab_community_normal_bg)));
+//        mContactBtnText.setTextColor(getResources().getColor(TUIThemeManager.getAttrResId(this, R.attr.demo_main_tab_normal_text_color)));
+//        mContactBtnIcon.setBackground(getResources().getDrawable(TUIThemeManager.getAttrResId(this, R.attr.demo_main_tab_contact_normal_bg)));
         mProfileSelfBtnText.setTextColor(getResources().getColor(TUIThemeManager.getAttrResId(this, R.attr.demo_main_tab_normal_text_color)));
         mProfileSelfBtnIcon.setBackground(getResources().getDrawable(TUIThemeManager.getAttrResId(this, R.attr.demo_main_tab_profile_normal_bg)));
 
@@ -555,19 +535,6 @@ public class MainActivity extends BaseLightActivity {
         }
 
         if (OfflinePushConfigs.getOfflinePushConfigs().getClickNotificationCallbackMode() == OfflinePushConfigs.CLICK_NOTIFICATION_CALLBACK_INTENT) {
-            if (DemoApplication.tuikit_demo_style == 1) {
-                Intent minimalistIntent = new Intent(this, MainMinimalistActivity.class);
-                minimalistIntent.putExtras(intent);
-                if (intent != null) {
-                    String ext = intent.getStringExtra(TUIConstants.TUIOfflinePush.NOTIFICATION_EXT_KEY);
-                    minimalistIntent.putExtra(TUIConstants.TUIOfflinePush.NOTIFICATION_EXT_KEY, ext);
-                }
-                minimalistIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                startActivity(minimalistIntent);
-                finish();
-                return;
-            }
-
             TUIUtils.handleOfflinePush(intent, new HandleOfflinePushCallBack() {
                 @Override
                 public void onHandleOfflinePush(boolean hasLogged) {

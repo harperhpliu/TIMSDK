@@ -33,9 +33,6 @@ import com.tencent.qcloud.tuicore.component.imageEngine.impl.GlideEngine;
 import com.tencent.qcloud.tuicore.util.ErrorMessageConverter;
 import com.tencent.qcloud.tuicore.util.ToastUtil;
 import com.tencent.qcloud.tuikit.tuichat.config.TUIChatConfigs;
-import com.tencent.qcloud.tuikit.tuicontact.TUIContactService;
-import com.tencent.qcloud.tuikit.tuicontact.config.TUIContactConfig;
-import com.tencent.qcloud.tuikit.tuicontact.interfaces.ContactEventListener;
 import com.tencent.qcloud.tuikit.tuiconversation.TUIConversationService;
 import com.tencent.qcloud.tuikit.tuiconversation.interfaces.ConversationEventListener;
 import com.tencent.qcloud.tuikit.tuiconversation.config.TUIConversationConfig;
@@ -134,7 +131,7 @@ public class ProfileLayout extends FrameLayout implements View.OnClickListener {
         boolean userStatus = mSharedPreferences.getBoolean(Constants.DEMO_SP_KEY_USER_STATUS, false);
         userStatusSwitch.setChecked(userStatus);
         TUIConversationConfig.getInstance().setShowUserStatus(userStatus);
-        TUIContactConfig.getInstance().setShowUserStatus(userStatus);
+//        TUIContactConfig.getInstance().setShowUserStatus(userStatus);
         userStatusSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -146,7 +143,7 @@ public class ProfileLayout extends FrameLayout implements View.OnClickListener {
                 }
 
                 TUIConversationConfig.getInstance().setShowUserStatus(isChecked);
-                TUIContactConfig.getInstance().setShowUserStatus(isChecked);
+//                TUIContactConfig.getInstance().setShowUserStatus(isChecked);
                 mSharedPreferences.edit().putBoolean(Constants.DEMO_SP_KEY_USER_STATUS, isChecked).commit();
                 refreshFragmentUI();
             }
@@ -178,11 +175,11 @@ public class ProfileLayout extends FrameLayout implements View.OnClickListener {
         } else {
             DemoLog.e(TAG, "refreshFragmentUI conversationEventListener is null");
         }
-
-        List<ContactEventListener> contactEventListenerList = TUIContactService.getInstance().getContactEventListenerList();
-        for (ContactEventListener contactEventListener : contactEventListenerList) {
-            contactEventListener.refreshUserStatusFragmentUI();
-        }
+//
+//        List<ContactEventListener> contactEventListenerList = TUIContactService.getInstance().getContactEventListenerList();
+//        for (ContactEventListener contactEventListener : contactEventListenerList) {
+//            contactEventListener.refreshUserStatusFragmentUI();
+//        }
     }
 
     private void openWebUrl(String url) {
